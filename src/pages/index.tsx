@@ -18,9 +18,10 @@ interface SearchCatImage {
 type SearchCatImageResponse = SearchCatImage[];
  
 const fetchCatImage = async () => {
-  const res = await fetch("https://api.thecatapi.com/v1/images/search");
+  const res = await fetch("https://dog.ceo/api/breeds/image/random");
   const result = (await res.json()) as SearchCatImageResponse;
-  return result[0];
+  // console.log(result[0])
+  return result;
 };
  
 interface IndexPageProps {
@@ -32,7 +33,10 @@ const IndexPage: NextPage<IndexPageProps> = ({ initialCatImageUrl }) => {
  
   const handleClick = async () => {
     const image = await fetchCatImage();
-    setCatImageUrl(image.url);
+    console.log(image)
+    console.log(image.message)
+    console.log(image.status)
+    setCatImageUrl(image.message);
   };
  
   return (
