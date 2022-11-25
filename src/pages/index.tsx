@@ -18,7 +18,7 @@ interface SearchCatImage {
 type SearchCatImageResponse = SearchCatImage[];
  
 const fetchCatImage = async () => {
-  const res = await fetch("https://api.thecatapi.com/v1/images/search");
+  const res = await fetch("https://api.thedogapi.com/v1/images/search");
   const result = (await res.json()) as SearchCatImageResponse;
   return result[0];
 };
@@ -37,7 +37,7 @@ const IndexPage: NextPage<IndexPageProps> = ({ initialCatImageUrl }) => {
  
   return (
     <div>
-      <button onClick={handleClick}>るなへ　きょうのにゃんこを見る🐱</button>
+      <button onClick={handleClick}>るなへ　きょうのわんこを見る🐱</button>
       <div style={{ marginTop: 8 }}>
         <img src={catImageUrl} width={500} height="auto" />
       </div>
