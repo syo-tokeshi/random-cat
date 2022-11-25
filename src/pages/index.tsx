@@ -7,17 +7,20 @@ interface CatCategory {
 }
  
 interface SearchCatImage {
-  message: string,
-  status: string
+  breeds: string[];
+  categories: CatCategory[];
+  id: string;
+  url: string;
+  width: number;
+  height: number;
 }
  
-type SearchCatImageResponse = SearchCatImage;
+type SearchCatImageResponse = SearchCatImage[];
  
 const fetchCatImage = async () => {
-  const res = await fetch("https://dog.ceo/api/breeds/image/random");
+  const res = await fetch("https://api.thedogapi.com/v1/images/search");
   const result = (await res.json()) as SearchCatImageResponse;
-  // console.log(result[0])
-  return result;
+  return result[0];
 };
  
 interface IndexPageProps {
@@ -29,15 +32,12 @@ const IndexPage: NextPage<IndexPageProps> = ({ initialCatImageUrl }) => {
  
   const handleClick = async () => {
     const image = await fetchCatImage();
-    console.log(image)
-    console.log(image.message)
-    console.log(image.status)
-    setCatImageUrl(image.message);
+    setCatImageUrl(image.url);
   };
  
   return (
     <div>
-      <button onClick={handleClick}>るなへ　きょうのにゃんこを見る🐱</button>
+      <button onClick={handleClick}>るなへ　きょうのわんこを見る🐱</button>
       <div style={{ marginTop: 8 }}>
         <img src={catImageUrl} width={500} height="auto" />
       </div>
