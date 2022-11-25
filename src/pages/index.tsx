@@ -7,12 +7,8 @@ interface CatCategory {
 }
  
 interface SearchCatImage {
-  breeds: string[];
-  categories: CatCategory[];
-  id: string;
-  url: string;
-  width: number;
-  height: number;
+  message: string,
+  status: string
 }
  
 type SearchCatImageResponse = SearchCatImage[];
