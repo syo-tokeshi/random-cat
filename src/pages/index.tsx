@@ -11,7 +11,7 @@ interface SearchCatImage {
   status: string
 }
  
-type SearchCatImageResponse = SearchCatImage[];
+type SearchCatImageResponse = SearchCatImage;
  
 const fetchCatImage = async () => {
   const res = await fetch("https://dog.ceo/api/breeds/image/random");
